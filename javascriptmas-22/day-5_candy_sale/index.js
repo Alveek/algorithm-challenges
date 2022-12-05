@@ -17,15 +17,12 @@ import products from "./data.js";
     ]
 */
 
-let shoppingCart = [];
+// переписал решение, потому что выход должен быть без type. Для этого и используется map(). В прошлом решении его не было.
 
-function filterSweets(items) {
-  return items.filter(item => item.type === "sweet");
-}
-
-function getSaleItems(data){
-  shoppingCart = filterSweets(data);
+function getSaleItems(data) {
+  return data.filter(item => item.type === "sweet").map(candy => ({ item: candy.item, price: candy.price }));
 };
 
-getSaleItems(products);
+const shoppingCart = getSaleItems(products);
+
 console.log(shoppingCart);
